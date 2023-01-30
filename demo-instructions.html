@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles-demo-instructions.css" />
+  </head>
+  <body>
+    <h1>Demo instructions</h1>
+    <ul>
+      <li>Open DevTools.</li>
+      <li>[In DevTools] Ensure there is no error.</li>
+      <li>
+        [In DevTools] Observe that this page has a CSP. The CSP includes the
+        hash of the inline script in this page.
+      </li>
+      <li>
+        [In browser] Add <code id="innocent-string"></code> to the home URL.
+        This works (this changes the title of the page) even though this relies
+        on innerHTML, because the script doing this is allowed via hash.
+      </li>
+      <li>
+        [In browser] Add <code id="xss-string"></code> to the home URL. This
+        time, we're asking the page to run a new script (window.alert) via our
+        malicious event handler. The CSP refuses to execute this inline event
+        handler (and all event handlers) because that would be an unallowed
+        script.
+      </li>
+      <li>
+        [In IDE] Edit the code of the inline script. Note how this breaks the
+        CSP.
+      </li>
+    </ul>
+    <script>
+      function printInstructions() {
+        document.getElementById(
+          'innocent-string'
+        ).innerText = `?product=gloves🧤`;
+        document.getElementById(
+          'xss-string'
+        ).innerText = `?product=<img src="" onerror="window.alert('XSS 🙀')" />`;
+      }
+      printInstructions();
+    </script>
+  </body>
+</html>

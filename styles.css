@@ -1,0 +1,13 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+  display: inline-block;
+}
+
+iframe {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
