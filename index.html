@@ -6,31 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️ </text></svg>"
-    />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="script-src 'sha256-en+J2xsFXmslFuXHAaSES4dNO9fnb0Mt+x56Gr8LB+U=' 'strict-dynamic' https:; object-src 'none'; base-uri 'none';"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Winter clothes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cake shop</title>
+
+    <!-- DEMO START 🟢 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- END DEMO START 🟢 -->
+    <!-- -------------------------------------------------- -->
+    <!-- DEMO BASIC CSP 🔴 -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://code.jquery.com"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      crossorigin="anonymous"
+    ></script> -->
+    <!-- END DEMO BASIC CSP 🔴 -->
+    <!-- -------------------------------------------------- -->
+    <!-- DEMO STRICT CSP 🔵 -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'sha256-fMAvR6lcSrX28rL5n4kY7AJGYfwgAcGVk8TSB9C0XcI=' 'strict-dynamic' https:; object-src 'none'; base-uri 'none';"
+    />
+    <!-- END DEMO STRICT CSP 🔵 -->
   </head>
   <body>
-    <h1>Product: <span id="product-name"></span></h1>
-    <p>Cool product page!</p>
-    <iframe
-      height="400px"
-      width="300px"
-      src="./demo-instructions.html"
-      frameborder="0"
-    ></iframe>
-    <!-- Hash = sha256-en+J2xsFXmslFuXHAaSES4dNO9fnb0Mt+x56Gr8LB+U= -->
+    <div class="header">🍰 Delicious cake shop</div>
+    <main>
+      <h1>Product: <span id="product-name"></span></h1>
+      <p>¥5,832</p>
+      <p>...Cake description...</p>
+      <div id="fake-image"></div>
+      <iframe
+        height="400px"
+        width="300px"
+        src="./demo-instructions.html"
+        frameborder="0"
+      ></iframe>
+    </main>
+    <!-- DEMO START 🟢 -->
+    <!-- <script src="./script.js"></script> -->
+    <!-- END DEMO START -->
+    <!-- -------------------------------------------------- -->
+    <!-- DEMO BASIC CSP 🔴 -->
+    <!-- <script src="./script.js"></script> -->
+    <!-- END DEMO BASIC CSP -->
+    <!-- -------------------------------------------------- -->
+    <!-- DEMO SCRIPT CSP 🔵 -->
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      let product = urlParams.get('product');
-      document.getElementById(
-        'product-name'
-      ).innerHTML = `<div>${product}</div>`; // dangerous!
+      const scripts = [
+        'https://code.jquery.com/jquery-3.6.3.min.js',
+        './script.js',
+      ];
+      scripts.forEach(function (scriptUrl) {
+        var s = document.createElement('script');
+        s.src = scriptUrl;
+        s.async = false; // to preserve execution order
+        document.head.appendChild(s);
+      });
     </script>
+    <!-- END DEMO STRICT CSP 🔵 -->
   </body>
 </html>

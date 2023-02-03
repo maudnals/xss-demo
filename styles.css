@@ -1,5 +1,25 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+}
+
+main {
+  margin: 1rem;
+}
+
+#product-name {
+  color: #ff5371;
+}
+
+#fake-image {
+  width: 16rem;
+  height: 16rem;
+  background-color: #ff537062;
 }
 
 span {
@@ -10,4 +30,13 @@ iframe {
   position: absolute;
   bottom: 2rem;
   right: 2rem;
+}
+
+.header {
+  background-color: #ff5371;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-family: 'Yeseva One', cursive;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Super cake shop</title>
     <link rel="stylesheet" href="./styles-demo-instructions.css" />
   </head>
   <body>
@@ -17,9 +17,10 @@
         hash of the inline script in this page.
       </li>
       <li>
-        [In browser] Add <code id="innocent-string"></code> to the home URL.
-        This works (this changes the title of the page) even though this relies
-        on innerHTML, because the script doing this is allowed via hash.
+        [In browser] Add <code id="innocent-string-1"></code> or
+        <code id="innocent-string-2"></code> to the home URL. This works (this
+        changes the title of the page) even though this relies on innerHTML,
+        because the script doing this is allowed via hash.
       </li>
       <li>
         [In browser] Add <code id="xss-string"></code> to the home URL. This
@@ -36,8 +37,11 @@
     <script>
       function printInstructions() {
         document.getElementById(
-          'innocent-string'
-        ).innerText = `?product=gloves🧤`;
+          'innocent-string-1'
+        ).innerText = `?product=いちごのショートケーキ`;
+        document.getElementById(
+          'innocent-string-2'
+        ).innerText = `?product=チーズケーキ`;
         document.getElementById(
           'xss-string'
         ).innerText = `?product=<img src="" onerror="window.alert('XSS 🙀')" />`;
